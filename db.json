@@ -1,0 +1,128 @@
+{
+  "orders": [
+    {
+      "id": "1",
+      "customerName": "Nur",
+      "email": "nur@mail.com",
+      "address": "İstanbul, Ümraniye",
+      "date": "2026-04-13",
+      "status": "Preparing",
+      "totalAmount": 1250,
+      "products": [
+        {
+          "id": 101,
+          "name": "Mouse",
+          "quantity": 1,
+          "price": 250
+        },
+        {
+          "id": 102,
+          "name": "Klavye",
+          "quantity": 1,
+          "price": 1000
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "customerName": "Berra",
+      "email": "berra@mail.com",
+      "address": "Ankara, Çankaya",
+      "date": "2026-04-12",
+      "status": "Delivered",
+      "totalAmount": 980,
+      "products": [
+        {
+          "id": 103,
+          "name": "Monitör",
+          "quantity": 1,
+          "price": 980
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "customerName": "Dudu",
+      "email": "dudu@mail.com",
+      "address": "İzmir, Bornova",
+      "date": "2026-04-11",
+      "status": "Pending",
+      "totalAmount": 450,
+      "products": [
+        {
+          "id": 104,
+          "name": "Kulaklık",
+          "quantity": 1,
+          "price": 980
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "customerName": "Su",
+      "email": "su@mail.com",
+      "address": "Antalya, Konyaaltı",
+      "date": "2026-04-10",
+      "status": "Preparing",
+      "totalAmount": 780,
+      "products": [
+        {
+          "id": 105,
+          "name": "birşey",
+          "quantity": 1,
+          "price": 380
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "customerName": "Erva",
+      "email": "erva@mail.com",
+      "address": "Trabzon, Aralik",
+      "date": "2026-04-09",
+      "status": "Pending",
+      "totalAmount": 620,
+      "products": [
+        {
+          "id": 106,
+          "name": "Kulaklık",
+          "quantity": 1,
+          "price": 620
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "101",
+      "name": "Mouse",
+      "price": 250
+    },
+    {
+      "id": "102",
+      "name": "Klavye",
+      "price": 1000
+    },
+    {
+      "id": "103",
+      "name": "Monitör",
+      "price": 980
+    },
+    {
+      "id": "104",
+      "name": "Kulaklık",
+      "price": 450
+    },
+    {
+      "id": "105",
+      "name": "birşey",
+      "price": 380
+    },
+    {
+      "id": "106",
+      "name": "Kulaklık",
+      "price": 620
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
