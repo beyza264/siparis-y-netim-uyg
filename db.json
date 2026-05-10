@@ -6,7 +6,7 @@
       "email": "nur@mail.com",
       "address": "İstanbul, Ümraniye",
       "date": "2026-04-13",
-      "status": "Preparing",
+      "status": "Shipped",
       "totalAmount": 1250,
       "products": [
         {
@@ -46,7 +46,7 @@
       "email": "dudu@mail.com",
       "address": "İzmir, Bornova",
       "date": "2026-04-11",
-      "status": "Pending",
+      "status": "Shipped",
       "totalAmount": 450,
       "products": [
         {
@@ -96,32 +96,44 @@
     {
       "id": "101",
       "name": "Mouse",
-      "price": 250
+      "category": "Elektronik",
+      "price": 250,
+      "stock": 50
     },
     {
       "id": "102",
       "name": "Klavye",
-      "price": 1000
+      "category": "Elektronik",
+      "price": 1000,
+      "stock": 10
     },
     {
       "id": "103",
       "name": "Monitör",
-      "price": 980
+      "category": "Elektronik",
+      "price": 980,
+      "stock": 20
     },
     {
       "id": "104",
       "name": "Kulaklık",
-      "price": 450
+      "category": "Elektronik",
+      "price": 450,
+      "stock": 30
     },
     {
       "id": "105",
       "name": "birşey",
-      "price": 380
+      "category": "Elektronik",
+      "price": 380,
+      "stock": 2
     },
     {
       "id": "106",
       "name": "Kulaklık",
-      "price": 620
+      "category": "Elektronik",
+      "price": 620,
+      "stock": 15
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

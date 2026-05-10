@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../services/api";
 import { Link } from "react-router-dom";
 import OrderStatusBadge from "../components/orders/OrderStatusBadge";
 
@@ -11,8 +11,8 @@ export default function Orders() {
   const [statusFilter, setStatusFilter] = useState("");
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/orders")
+    api
+      .get("/orders")
       .then((response) => {
         setOrders(response.data);
         setLoading(false);

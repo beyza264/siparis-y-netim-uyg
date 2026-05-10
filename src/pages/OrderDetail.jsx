@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
+import api from "../services/api";
 import OrderStatusBadge from "../components/orders/OrderStatusBadge";
 
 export default function OrderDetail() {
@@ -10,8 +10,8 @@ export default function OrderDetail() {
   const [newStatus, setNewStatus] = useState("");
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3001/orders/${id}`)
+    api
+      .get(`/orders/${id}`)
       .then((response) => {
         setOrder(response.data);
         setNewStatus(response.data.status);
@@ -24,8 +24,8 @@ export default function OrderDetail() {
   }, [id]);
 
   const handleUpdateStatus = () => {
-    axios
-      .patch(`http://localhost:3001/orders/${id}`, { status: newStatus })
+    api
+      .patch(`/orders/${id}`, { status: newStatus })
       .then((response) => {
         setOrder(response.data);
         alert("Sipariş durumu güncellendi!");
@@ -37,16 +37,16 @@ export default function OrderDetail() {
   if (!order) return <p>Sipariş bulunamadı!</p>;
 
   return (
-    <div style={{ padding: "20px" }}>
-      <Link to="/orders" style={{ textDecoration: "none", color: "blue" }}>
+    <div style={containerStyle}>
+      <Link to="/orders" style={{ textDecoration: "none", color: "#f4f4f4", fontWeight: "600", display: "inline-block", marginBottom: "20px",border:"1px solid #f4f4f4", padding:"8px 15px", borderRadius:"4px", background:"#b66dff" }}>
        Listeye Geri Dön
       </Link>
 
-      <h2 style={{ borderBottom: "1px solid #ddd", paddingBottom: "10px" }}>
+      <h2 style={titleStyle}>
         Sipariş Detayı ({order.id})
       </h2>
 
-      <section style={{ marginBottom: "20px" }}>
+      <section style={cardStyle}>
         <h3>Müşteri Bilgileri</h3>
         <p>
           <strong>Ad:</strong> {order.customerName}
@@ -66,8 +66,8 @@ export default function OrderDetail() {
         </p>
       </section>
 
-      <section style={{ marginBottom: "20px" }}>
-        <h3>Sipariş İçeriği</h3>
+      <section style={cardStyle}>
+        <h3 style={titleStyle} >Sipariş İçeriği</h3>
         <ul>
           {order.products &&
             order.products.map((product) => (
@@ -82,14 +82,9 @@ export default function OrderDetail() {
       </section>
 
       <section
-        style={{
-          marginTop: "30px",
-          padding: "15px",
-          backgroundColor: "#f9f9f9",
-          borderRadius: "8px",
-        }}
+        style={cardStyle}
       >
-        <h4>Sipariş Durumunu Yönet</h4>
+        <h4 style={titleStyle}>Sipariş Durumunu Yönet</h4>
         <select
           value={newStatus}
           onChange={(e) => setNewStatus(e.target.value)}
@@ -117,4 +112,26 @@ export default function OrderDetail() {
       </section>
     </div>
   );
+}
+const containerStyle={
+  backgroundColor: "#fff",
+  padding: "30px",
+  borderRadius: "8px",
+  boxShadow: "0 0px 15px rgba(0,0,0,0.05)",
+  maxWidth: "800px",
+  margin: "40px auto",
+}
+
+ const titleStyle={
+  color:"#b66dff",
+  marginBottom:"20px",
+  paddingBottom:"15px",
+  borderBottom:"2px solid #f0f0f0",
+}
+const cardStyle={
+  backgroundColor: "#fcfcfc",
+  padding: "15px",
+  border: "1px solid #eee",
+  borderRadius: "8px",
+  marginBottom: "20px",
 }
