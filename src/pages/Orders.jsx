@@ -14,12 +14,13 @@ export default function Orders() {
     api
       .get("/orders")
       .then((response) => {
-        setOrders(response.data);
+        setOrders(  response?.data || []);
         setLoading(false);
       })
-      .catch((error) => {
+      .catch((error) => { 
         setError(error);
         setLoading(false);
+        alert("Siparişler alınırken hata oluştu. Lütfen tekrar deneyiniz.");
       });
   }, []);
 
@@ -27,13 +28,13 @@ export default function Orders() {
   if (error) return <p>Hata: {error.message}</p>;
 
   const filteredOrders = orders.filter((order) => {
-    const matchesName = order.customerName
+    const matchesName = (order?.customerName||"")
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
     const matchesStatus =
       statusFilter === "All" ||
       statusFilter === "" ||
-      order.status === statusFilter;
+      order?.status === statusFilter;
     return matchesName && matchesStatus;
   });
 
@@ -71,16 +72,16 @@ export default function Orders() {
         </thead>
         <tbody>
           {filteredOrders.map((order) => (
-            <tr key={order.id}>
-              <td>{order.id}</td>
-              <td>{order.customerName}</td>
-              <td>{order.date}</td>
+            <tr key={order?.id}>
+              <td>{order?.id}</td>
+              <td>{order?.customerName}</td>
+              <td>{order?.date}</td>
               <td>
-                <OrderStatusBadge status={order.status} />
+                <OrderStatusBadge status={order?.status} />
               </td>
-              <td>{order.totalAmount} TL</td>
+              <td>{order?.totalAmount} TL</td>
               <td>
-                <Link to={`/orders/${order.id}`}>
+                <Link to={`/orders/${order?.id}`}>
                   <button>Detay</button>
                 </Link>
               </td>

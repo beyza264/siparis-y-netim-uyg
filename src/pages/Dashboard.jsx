@@ -4,15 +4,15 @@ export default function Dashboard() {
   const[orders, setOrders] = useState([]);
  useEffect(() => {
   api.get("/orders")
-  .then((response) => {setOrders(response.data);})
-  .catch((err) => {console.log("Siparişler alınırken hata:", err);});
+  .then((response) => {setOrders(response?.data);})
+  .catch((err) => {console.log("Siparişler alınırken hata:", err); alert("Siparişler alınırken hata oluştu. Lütfen tekrar deneyiniz.");});
  }, []);
 
-  const totalOrders = orders.length;
-  const pendingOrders = orders.filter((order) => order.status === "Pending").length;
-  const shippedOrders = orders.filter((order) => order.status === "Shipped").length;
-  const deliveredOrders = orders.filter((order) => order.status === "Delivered").length;
-  const preparingOrders = orders.filter((order) => order.status === "Preparing").length;
+  const totalOrders = orders?.length||0;
+  const pendingOrders = orders.filter((order) => order?.status === "Pending")?.length||0;
+  const shippedOrders = orders.filter((order) => order?.status === "Shipped")?.length||0;
+  const deliveredOrders = orders.filter((order) => order?.status === "Delivered")?.length||0;
+  const preparingOrders = orders.filter((order) => order?.status === "Preparing")?.length||0;
   return (
       <div style={{padding: "30px",maxWidth:"1200px", margin:"0 auto"}} >
         <h1 style={{color:"#333", marginBottom:"30px", fontSize:"25px"}} >Dashboard</h1>

@@ -12,11 +12,12 @@ export default function CreateOrder() {
   useEffect(() => {
     api.get("/products")
       .then((response) => {
-        setProductList(response.data);
+        setProductList(response?.data||[]);
       })
-      .catch((error) =>
+      .catch((error) =>{
         console.error("Ürünler yüklenirken hata oluştu:", error),
-      );
+      alert("Ürünler yüklenirken hata oluştu. Lütfen tekrar deneyiniz.");
+   } );
   }, []);
 
   const handleAddProduct = (e) => {
@@ -30,7 +31,7 @@ export default function CreateOrder() {
       return;
     }
     const productDetail = productList.find(
-      (p) => String(p.id) === String(selectedProduct)
+      (p) => String(p?.id) === String(selectedProduct)
     );
 
     if (!productDetail) {
@@ -120,7 +121,7 @@ const handleCompleteOrder = () => {
           style={inputStyle}
         >
           <option value="">Ürün Seçiniz</option>
-          {productList.map((product) => (
+          {productList?.map((product) => (
             <option key={product.id} value={product.id}>
               {product.name} - ${product.price}
             </option>
@@ -161,7 +162,7 @@ const handleCompleteOrder = () => {
 
       <div>
         <h3>Sipariş Özeti</h3>
-        {orderItems.map((item) => (
+        {orderItems?.map((item) => (
           <div
             key={item.id}
             style={{

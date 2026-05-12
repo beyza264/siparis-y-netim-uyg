@@ -13,12 +13,13 @@ export default function OrderDetail() {
     api
       .get(`/orders/${id}`)
       .then((response) => {
-        setOrder(response.data);
-        setNewStatus(response.data.status);
+        setOrder(response?.data || null);
+        setNewStatus(response?.data?.status||"");
         setLoading(false);
       })
       .catch((error) => {
         console.error("Hata:", error);
+        alert("Sipariş detayları alınırken hata oluştu. Lütfen tekrar deneyiniz.");
         setLoading(false);
       });
   }, [id]);
@@ -27,10 +28,13 @@ export default function OrderDetail() {
     api
       .patch(`/orders/${id}`, { status: newStatus })
       .then((response) => {
-        setOrder(response.data);
+        setOrder(response?.data || null);
         alert("Sipariş durumu güncellendi!");
       })
-      .catch((err) => console.log("Güncelleme hatası:", err));
+      .catch((err) => {
+        console.log("Güncelleme hatası:", err);
+        alert("Sipariş durumu güncellenirken hata oluştu. Lütfen tekrar deneyiniz.");
+      });
   };
 
   if (loading) return <p>Yükleniyor...</p>;
@@ -69,15 +73,15 @@ export default function OrderDetail() {
       <section style={cardStyle}>
         <h3 style={titleStyle} >Sipariş İçeriği</h3>
         <ul>
-          {order.products &&
-            order.products.map((product) => (
-              <li key={product.id}>
-                {product.name} - {product.quantity} Adet - ({product.price} TL)
+          {
+            order?.products?.map((product) => (
+              <li key={product?.id}>
+                {product?.name} - {product?.quantity} Adet - ({product?.price} TL)
               </li>
             ))}
         </ul>
         <p>
-          <strong>Toplam Tutar:</strong> {order.totalAmount} TL
+          <strong>Toplam Tutar:</strong> {order?.totalAmount} TL
         </p>
       </section>
 
