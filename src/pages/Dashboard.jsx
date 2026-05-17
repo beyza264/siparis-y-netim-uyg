@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import api from "../services/api";
+import { FiPackage, FiClock, FiSettings, FiTruck, FiCheckCircle } from "react-icons/fi";
 export default function Dashboard() {
   const[orders, setOrders] = useState([]);
  useEffect(() => {
@@ -14,32 +15,41 @@ export default function Dashboard() {
   const deliveredOrders = orders.filter((order) => order?.status === "Delivered")?.length||0;
   const preparingOrders = orders.filter((order) => order?.status === "Preparing")?.length||0;
   return (
-      <div style={{padding: "30px",maxWidth:"1200px", margin:"0 auto"}} >
-        <h1 style={{color:"#333", marginBottom:"30px", fontSize:"25px"}} >Dashboard</h1>
-      
+      <div className="dashboard-page" >
 
-    <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "20px"}} >
-      <div style={{...cardStyle, background:"#b66dff"}}  >
-        <h3 style={titleStyle} >Toplam Sipariş</h3>
-        <p style={{margin:"0", fontSize:"36px", fontWeight:"bold"}}  >{totalOrders}</p>
+        <div className="dashboard-header"  >
+        <h1 >Dashboard</h1>
+        <p>Sipariş ve ürün durumlarını anlık olarak görüntüleyin.</p>
       </div>
 
-       <div style={{...cardStyle, background:"#fe7c70"}} >
-         <h3 style={titleStyle} >Pending (Beklemede)</h3>
-         <p style={{margin:"0", fontSize:"36px", fontWeight:"bold"}}  >{pendingOrders}</p>
+    <div  className="stats-grid" >  
+
+      <div  className="stat-card" >
+        <div className="icon-wrapper bg-blue" ><FiPackage /></div>
+        <h3  className="stat-title">Toplam Sipariş</h3>
+        <p className="stat-value">{totalOrders}</p>
+      </div>
+
+       <div className="stat-card" >
+         <div className="icon-wrapper bg-orange" ><FiClock /></div>
+         <h3  className="stat-title">Beklemede</h3>
+         <p className="stat-value">{pendingOrders}</p>
        </div>
     
-       <div style={{...cardStyle, background:"#047edf"}} > 
-          <h3 style={titleStyle} >Preparing (Hazırlanıyor)</h3>
-          <p style={{margin:"0", fontSize:"36px", fontWeight:"bold"}}  >{preparingOrders}</p>
+       <div className="stat-card" > 
+          <div className="icon-wrapper bg-blue" ><FiSettings /></div>
+          <h3  className="stat-title">Hazırlanıyor</h3>
+          <p className="stat-value">{preparingOrders}</p>
        </div>
-        <div style={{...cardStyle, background:"#07cdae"}} >
-          <h3 style={titleStyle} >Shipped (Kargoda)</h3>
-          <p style={{margin:"0", fontSize:"36px", fontWeight:"bold"}}  >{shippedOrders}</p>
+        <div className="stat-card" >
+          <div className="icon-wrapper bg-purple" ><FiTruck /></div>
+          <h3  className="stat-title">Kargoda</h3>
+          <p className="stat-value">{shippedOrders}</p>
        </div>
-        <div style={{...cardStyle, background:"#117"}} >
-          <h3 style={titleStyle} >Delivered (Teslim Edildi)</h3>
-          <p style={{margin:"0", fontSize:"36px", fontWeight:"bold"}}  >{deliveredOrders}</p>
+        <div className="stat-card" >
+          <div className="icon-wrapper bg-green" ><FiCheckCircle /></div>
+          <h3  className="stat-title">Teslim Edildi</h3>
+          <p className="stat-value">{deliveredOrders}</p>
        </div>
 
     </div>
@@ -47,23 +57,3 @@ export default function Dashboard() {
   )
 }
 
-const cardStyle = {
-  padding: "20px",
-  borderRadius: "8px",
-  color:"white",
-  boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
-  display: "flex",
-  flexDirection: "column",
-  gap: "15px",
-  backgroundColor: "#4CAF50",
-  textAlign: "center",
-  justifyContent: "center",
-  alignItems: "center",
-
-};
-
-const titleStyle = {
-  margin: "0",
-  fontSize: "18px",
-  fontWeight: "500",
-};  

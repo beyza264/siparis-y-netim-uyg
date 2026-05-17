@@ -24,7 +24,7 @@ export default function Navbar({isOpen, setIsOpen}) {
             </button>
               <nav style={sidebarStyle} >
           
-            {isOpen &&  <h2 style={{margin:"0", padding:"10px", marginTop:"50px"}}>sidebar</h2>}
+            {isOpen &&  <h2 style={{margin:"0", padding:"10px", marginTop:"50px"}}>Sipariş Paneli</h2>}
             <div style={{display:"flex", flexDirection:"column", gap:"10px", marginTop:"20px", transition:"opacity 0.3s ease", opacity:isOpen? 1:0}}>
         <Link to="/" style={linkStyle} >Dashboard</Link>
         <Link to="/orders" style={linkStyle} >Orders</Link>
