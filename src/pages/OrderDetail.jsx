@@ -45,9 +45,9 @@ export default function OrderDetail() {
       <div className="orders-header" >
         <div>
           <h2 style={{margin:"0 0 5px 0 ",color:"#1e293b", fontSize:"24px"}} >Sipariş Detayı</h2>
-          <p style={{margin:"0", color:"#64748b", fontSize:"14px"}} >Sipariş detaylarını görüntüleyin ve yönetin</p>
+          <p style={{margin:"0", color:"#64748b", fontSize:"14px", marginBottom:"10px"}} >Sipariş detaylarını görüntüleyin ve yönetin</p>
         </div>
-      <Link to="/orders" style={{ textDecoration: "none", color: "#f4f4f4", fontWeight: "600", display: "inline-block", marginBottom: "20px",border:"1px solid #f4f4f4", padding:"8px 15px", borderRadius:"4px", background:"#b66dff" }}>
+      <Link to="/orders"  style={{ padding:"8px 15px", borderRadius:"4px", fontSize:"14px", textDecoration:"none", marginTop:"20px", color:"#3b82f6", border:"1px solid #bfdbfe"}} >
         Siparişlere Geri Dön
       </Link>
 </div> 
@@ -94,7 +94,7 @@ export default function OrderDetail() {
               <option value="Shipped">Kargoda</option>
               <option value="Delivered">Teslim Edildi</option>
             </select>
-            <button onClick={handleUpdateStatus} style={{marginLeft:"10px", padding:"8px 15px", cursor:"pointer", backgroundColor:"#4CAF50", color:"white", border:"none", borderRadius:"4px"}} >
+            <button onClick={handleUpdateStatus} style={{marginLeft:"10px", padding:"8px 15px", cursor:"pointer", backgroundColor:"#ffff", color:"#4CAF50", border:"1px solid #c5e2c7", borderRadius:"4px", marginTop:"10px"}} >
               Durumu Güncelle
             </button>
           </div>

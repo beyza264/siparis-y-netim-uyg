@@ -151,7 +151,7 @@ const handleCompleteOrder = () => {
                 style={inputStyle}
               />
             </div>
-  <button  className="btn-primary"       onClick={handleAddProduct}     style={{padding:"10px 20px", backgroundColor:"#2563eb", color:"#fff", border:"none", borderRadius:"6px", cursor:"pointer"}} >
+  <button  className="btn-primary"       onClick={handleAddProduct}     style={{padding:"10px 20px", backgroundColor:"#2563eb", color:"#fff", border:"none", borderRadius:"6px", cursor:"pointer", marginLeft:"27px", marginBottom:"4px"}} >
           Ürün Ekle
         </button>
        </div>
