@@ -19,7 +19,7 @@ export default function Navbar({isOpen, setIsOpen}) {
     }
     return (
         <>
-          <button onClick={()=>setIsOpen(!isOpen)} style={{position:"fixed", top:"20px", left:"20px",zIndex:1002, cursor:"pointer", background:"#b66dff", border:"none",padding:"10px 15px", fontSize:"20px"}}>
+          <button onClick={()=>setIsOpen(!isOpen)} style={{position:"fixed", top:"20px", left:"20px",zIndex:1002, cursor:"pointer", background:"#3b82f6", border:"none",padding:"10px 15px", fontSize:"20px"}}>
                 {isOpen? "X": "☰"}
             </button>
               <nav style={sidebarStyle} >
