@@ -5,7 +5,7 @@ export default function OrderStatusBadge({ status }) {
 
   if (status === "Pending") {
     bgcolor = "#fffbeb";
-    textcolor= "#d97706";
+    textcolor = "#d97706";
     label = "Beklemede";
   } else if (status === "Preparing") {
     bgcolor = "#eff6ff";
